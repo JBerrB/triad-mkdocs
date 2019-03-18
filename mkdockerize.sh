@@ -11,7 +11,7 @@ then
 else
    if [ "$OPTION" = "serve" ];
       then
-         rm -rf input/*
+         mkdir -p input && rm -rf input/*
          cd triad-website && tar cfz site.tar.gz * && cd ..
          mv triad-website/site.tar.gz ./input/
          docker run -p 8000:8000 -d -v ${PWD}/input:/tmp mkdocs serve

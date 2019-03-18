@@ -1,2 +1,3 @@
-mkdocs-website/input
-mkdocs-website/output
+input
+output
+site.tar.gz
