@@ -2,19 +2,19 @@
 
 OPTION=$1
 
-cd mkdocs-website
+cd mkdocs
 
 if [ "$OPTION" = "produce" ];
 then
    rm -rf output
-   docker run -d -v ${PWD}/output:/tmp mkdocs-website produce
+   docker run -d -v ${PWD}/output:/tmp mkdocs produce
 else
    if [ "$OPTION" = "serve" ];
       then
          rm -rf input/*
          cd triad-website && tar cfz site.tar.gz * && cd ..
          mv triad-website/site.tar.gz ./input/
-         docker run -p 8000:8000 -d -v ${PWD}/input:/tmp mkdocs-website serve
+         docker run -p 8000:8000 -d -v ${PWD}/input:/tmp mkdocs serve
    fi
 fi
 
