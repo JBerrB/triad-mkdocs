@@ -1,3 +1,5 @@
 input
 output
 site.tar.gz
+tests/*.pyc
+tests/results.xml
