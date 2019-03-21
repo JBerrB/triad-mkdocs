@@ -1,11 +1,9 @@
-import urllib
+import httplib
 
-site_url="http://127.0.0.1:8000"
+site_url="127.0.0.1:8000"
 
 def test_http_response():
-   response_code = urllib.urlopen(site_url).getcode()
-   assert response_code == 200
-
-def test_index_title():
-   response_content = urllib.urlopen(site_url).read()
-   assert "TRI-AD Demo Test" in response_content
+   conn = httplib.HTTPConnection(site_url)
+   conn.request("HEAD", "/")
+   r1 = conn.getresponse()
+   assert r1.status == 200
