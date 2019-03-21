@@ -16,6 +16,8 @@ mkdocs ->
 	* files/entrypoint.sh: Allows to use image to both produce a website or serve it
 	* files/mkdocs.yml: Mkdocs YAML document to generate docs website
 README.md -> explaining usage and design
+Jenkinsfile -> Used by Jenkins mkdocs-triad job to build and test the project
+tests -> Folder that contains .py test files to be executed using nosetests
 .gitignore -> gitignore file to ignore input and output folders created for volumes
 
 
@@ -23,7 +25,7 @@ NOTES
 The Mkdocs image is built this way:
 docker build --build-arg PROJECT_NAME=tri-ad -t mkdocs .
 
-To input/output data into and from the Mkdocs container, I’m using local volumes bound to the /tmp folder inside the container 
+To input/output data into and from the Mkdocs container, I’m using bind mounts to the /tmp folder inside the container 
 * produce
 docker run -d -v ${PWD}/output:/tmp mkdocs produce
 
